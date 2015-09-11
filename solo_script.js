@@ -1,12 +1,12 @@
 // ! ! !
 // Three Bugs
 
-var arrayAtticus = ["Atticus", "2405", "47000", 3];
-var arrayJem = ["Jem", "62347", "63500", 4];
-var arrayBoo = ["Boo", "11435", "54000", 3];
-var arrayScout = ["Scout", "6243", "74750", 5];
+var Atticus = {name: "Atticus", employeeNumber: "2405", baseSalary: "47000", reviewScore: 3};
+var Jem = {name: "Jem", employeeNumber: "62347", baseSalary: "63500", reviewScore: 4};
+var Boo = {name: "Boo", employeeNumber: "11435", baseSalary: "54000", reviewScore: 3};
+var Scout = {name: "Scout", employeeNumber: "6243", baseSalary: "74750", reviewScore: 5};
 
-var array = [arrayAtticus, arrayJem, arrayBoo, arrayScout];
+var array = [Atticus, Jem, Boo, Scout];
 
 //Create variables used to write to the DOM
 var newEl, newText, position;
@@ -23,14 +23,14 @@ for(var i = 0; i < array.length; i++){
 	position.appendChild(newEl);
 }
 
-function calculateSTI(array){
+function calculateSTI(object){
   var newArray = [];
 
-  newArray[0] = array[0];
+  newArray[0] = object.name;
 
-  var employeeNumber = array[1];
-  var baseSalary = array[2];
-  var reviewScore = array[3];
+  var employeeNumber = object.employeeNumber;
+  var baseSalary = object.baseSalary;
+  var reviewScore = object.reviewScore;
 
   var bonus = getBaseSTI(reviewScore) + getYearAdjustment(employeeNumber) - getIncomeAdjustment(baseSalary);
   if(bonus > 0.13){
@@ -78,7 +78,7 @@ function getYearAdjustment(employeeNumber){
 
 function getIncomeAdjustment(salary){
   var incomeAdjustment = 0;
-  salary = parseInt(salary);
+  salary = parseInt(this.salary);
   if(salary > 65000){
     incomeAdjustment = 0.01;
   }
